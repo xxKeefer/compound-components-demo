@@ -1,9 +1,9 @@
-import {
-  Container,
-  InitialBusinessCard,
-  BloatedBusinessCard,
-} from "./components";
+import { Container } from "./components";
+import { useUserActions } from "./hooks/useUserActions";
 import { UserProfile } from "./types";
+import { BusinessCard } from "./components/ExampleOne/BusinessCard";
+// import { BusinessCard } from "./components/ExampleTwo/BusinessCard";
+// import { default as BusinessCard } from "./components/FinalExample/BusinessCard";
 
 const user: UserProfile = {
   image: "/wizard.jpeg",
@@ -21,9 +21,10 @@ const user: UserProfile = {
 };
 
 function App() {
+  const { onConnect, onMessage } = useUserActions(user);
   return (
     <Container>
-      {/* <InitialBusinessCard
+      <BusinessCard
         bgImage={user.bgImage}
         image={user.image}
         location={user.location}
@@ -31,17 +32,8 @@ function App() {
         pronouns={user.pronouns}
         tagline={user.tagline}
         socials={user.socials}
-      /> */}
-      <BloatedBusinessCard
-        bgImage={user.bgImage}
-        image={user.image}
-        location={user.location}
-        name={user.name}
-        pronouns={user.pronouns}
-        tagline={user.tagline}
-        socials={user.socials}
-        hideSocials
-        hideImages
+        onConnect={onConnect}
+        onMessage={onMessage}
       />
     </Container>
   );

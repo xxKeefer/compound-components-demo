@@ -1,3 +1,2 @@
-export * from "./Layout";
-export * from "./InitialBusinessCard";
-export * from "./BloatedBusinessCard";
+export * from "./layout";
+export * from "./shared";
